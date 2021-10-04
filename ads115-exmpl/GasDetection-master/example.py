@@ -10,13 +10,13 @@ temp_pub_topic = "kichen/sensors/gas/MQ2"
 
 def getPPM(ppm, detection):
     payload=json.dumps(
-    {   "CO": ppm[detection.CO_GAS],
-        "H2": ppm[detection.H2_GAS],
-        "CH4":   ppm[detection.CH4_GAS],
-        "LPG": ppm[detection.LPG_GAS],
-        "PROPHANE": ppm[detection.PROPANE_GAS],
-        "ALCOHOL":   ppm[detection.ALCOHOL_GAS],
-        "SMOKE": ppm[detection.SMOKE_GAS]
+    {   "CO": round( ppm[detection.CO_GAS], 3),
+        "H2": round( ppm[detection.H2_GAS], 3),
+        "CH4":   round( ppm[detection.CH4_GAS], 3),
+        "LPG": round( ppm[detection.LPG_GAS], 3),
+        "PROPHANE": round( ppm[detection.PROPANE_GAS], 3),
+        "ALCOHOL":   round( ppm[detection.ALCOHOL_GAS], 3),
+        "SMOKE": round( ppm[detection.SMOKE_GAS], 3)
     }
     )
     
@@ -61,7 +61,7 @@ def main():
         while True:
             ppm = detection.percentage()
             payload = getPPM(ppm, detection)
-            client.publish(temp_pub_topic, payload)
+            client.publish(temp_pub_topic, payload, retain = True)
             time.sleep(5)
 
     except KeyboardInterrupt:

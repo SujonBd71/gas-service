@@ -140,7 +140,7 @@ class GasDetection:
 
         resistance = resistance if resistance else self.LOAD_RESISTANCE
 
-        return float(resistance * (1023.0 - voltage) / float(voltage))
+        return float(resistance * (65535.0 - voltage) / float(voltage))
 
     def __calculate_percentage(self, ratio, curve):
         """
