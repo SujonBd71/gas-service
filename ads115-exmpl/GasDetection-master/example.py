@@ -25,7 +25,7 @@ def getPPM(ppm, detection):
 
 
 def createMQTTClient():
-  Broker = "192.168.1.151"
+  Broker = "192.168.1.50"
   hum_pub_topic = "living_room/weather/humidity"
   
   
