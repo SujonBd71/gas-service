@@ -1,0 +1,14 @@
+[Unit]
+Description= MQ gas service
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python3 /home/pi/Desktop/Smoke-Service/smoke-service/ads115-exmpl/GasDetection-master/example.py
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+
